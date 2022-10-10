@@ -1,0 +1,65 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --shadowgrey: rgb(235, 235, 235);
+    --green: rgb(147, 220, 0);
+    --border-radius: 10px;
+    /* --toggle-switch-size-multiplier: 1; */
+}
+
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 50px;
+    height: 29px;
+    border-radius: 28px;
+    background-color: rgb(240, 240, 240);
+    position: relative;
+    transition: all .4s;
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--green);
+    transition: all .4s;
+}
+
+/* slider pseudo element */
+input[type="checkbox"]:checked::before {
+    left: 25px;
+    transition: all .4s;
+}
+
+input[type="checkbox"]::before {
+    width: 20px;
+    height: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 1px 1px 1px 1px var(--shadowgrey);
+    background-color: white;
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    transition: all .4s;
+}
+
+
+/* toggles label visibility */
+input[type="checkbox"] ~ label .off,
+input[type="checkbox"]:checked ~ label .on {
+    opacity: 1;
+}
+
+input[type="checkbox"] ~ label .on,
+input[type="checkbox"]:checked ~ label .off {
+    opacity: 0;
+}
+
+/* keeps the label in the one spot */
+label span {
+    position: absolute;
+}
+
