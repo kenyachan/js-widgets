@@ -5,16 +5,14 @@
 }
 
 :root {
-    --shadowgrey: rgb(235, 235, 235);
     --green: rgb(147, 220, 0);
-    --border-radius: 10px;
-    /* --toggle-switch-size-multiplier: 1; */
 }
 
 body {
     padding: 2rem;
 }
 
+/* Switch and label positioning */
 .switch-widget {
     display: grid;
     align-items: center;
@@ -32,6 +30,7 @@ body {
     align-items: center;
 }
 
+/* Switch Styling */
 .switch-widget input[type="checkbox"] {
     appearance: none;
     width: 37px;
@@ -42,17 +41,19 @@ body {
     transition: background-color 400ms ease;
 }
 
+/* Switch background when position is 'on' */
 .switch-widget input[type="checkbox"]:checked {
     background-color: var(--green, rgb(147, 220, 0));
     transition: background-color 400ms ease;
 }
 
-/* slider pseudo element */
+/* Controls how far the slider moves */
 .switch-widget input[type="checkbox"]:checked::before {
     left: 19px;
     transition: left 200ms;
 }
 
+/* slider pseudo element styling and initial position */
 .switch-widget input[type="checkbox"]::before {
     width: 16px;
     height: 16px;
@@ -60,11 +61,16 @@ body {
     border-radius: 50%;
     background-color: white;
     content: '';
+
+    /* Initial position */
     position: absolute;
     top: -3px;
     left: 0px;
+
     transition: left 200ms;
 }
+
+/* || Label - Animation for toggling label */
 
 .switch-widget input[type="checkbox"] ~ label .off,
 .switch-widget input[type="checkbox"]:checked ~ label .on {
@@ -78,6 +84,7 @@ body {
     transition: opacity 100ms;
 }
 
+/* Ensures labels overlap */
 .switch-widget label span {
     position: absolute;
 }
