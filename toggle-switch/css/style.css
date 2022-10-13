@@ -11,55 +11,74 @@
     /* --toggle-switch-size-multiplier: 1; */
 }
 
-
-input[type="checkbox"] {
-    appearance: none;
-    width: 50px;
-    height: 29px;
-    border-radius: 28px;
-    background-color: rgb(240, 240, 240);
-    position: relative;
-    transition: all .4s;
+body {
+    padding: 2rem;
 }
 
-input[type="checkbox"]:checked {
-    background-color: var(--green);
-    transition: all .4s;
+.switch-widget {
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+}
+
+.switch-widget > input[type="checkbox"] {
+    grid-column: 2 3;
+}
+
+.switch-widget > label {
+    grid-column: 1 2;
+    display: grid;
+    align-items: center;
+}
+
+.switch-widget input[type="checkbox"] {
+    appearance: none;
+    width: 37px;
+    height: 12px;
+    border-radius: 15px;
+    background-color: lightgrey;
+    position: relative;
+    transition: background-color 400ms ease;
+}
+
+.switch-widget input[type="checkbox"]:checked {
+    background-color: var(--green, rgb(147, 220, 0));
+    transition: background-color 400ms ease;
 }
 
 /* slider pseudo element */
-input[type="checkbox"]:checked::before {
-    left: 25px;
-    transition: all .4s;
+.switch-widget input[type="checkbox"]:checked::before {
+    left: 19px;
+    transition: left 200ms;
 }
 
-input[type="checkbox"]::before {
-    width: 20px;
-    height: 20px;
-    border-radius: var(--border-radius);
-    box-shadow: 1px 1px 1px 1px var(--shadowgrey);
+.switch-widget input[type="checkbox"]::before {
+    width: 16px;
+    height: 16px;
+    border: 1px solid lightgrey;
+    border-radius: 50%;
     background-color: white;
     content: '';
     position: absolute;
-    top: 4px;
-    left: 4px;
-    transition: all .4s;
+    top: -3px;
+    left: 0px;
+    transition: left 200ms;
 }
 
-
-/* toggles label visibility */
-input[type="checkbox"] ~ label .off,
-input[type="checkbox"]:checked ~ label .on {
+.switch-widget input[type="checkbox"] ~ label .off,
+.switch-widget input[type="checkbox"]:checked ~ label .on {
     opacity: 1;
+    transition: opacity 100ms;
 }
 
-input[type="checkbox"] ~ label .on,
-input[type="checkbox"]:checked ~ label .off {
+.switch-widget input[type="checkbox"] ~ label .on,
+.switch-widget input[type="checkbox"]:checked ~ label .off {
     opacity: 0;
+    transition: opacity 100ms;
 }
 
-/* keeps the label in the one spot */
-label span {
+.switch-widget label span {
     position: absolute;
 }
 
