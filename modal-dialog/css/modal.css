@@ -41,46 +41,50 @@ main button:hover {
 
 
 .modal-widget {
-    display: flex;
-    position: fixed;
-    top: 25vh;
-    align-self: center;
-}
-
-.modal-dialog {    
-    z-index: 2;
-    
-    /* exit transitions */
-    transition: .1s ease-in;
-    transform: translateY(130%) scale(0); 
-    opacity: 0;
-}
-
-.modal-dialog.active {    
-    /* entry transitions */
-    transition: .25s ease-out;
-    transform: translateY(0) scale(1);
-    opacity: 1;
-}
-
-.overlay {
-    display: flex;
     position: fixed;
     top: 0;
-    left: 0;
     z-index: 1;
-    
-    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.modal-widget .modal-dialog {    
+    position: fixed;
+    bottom: 105%;
+
+    will-change: bottom;
+    transition: bottom .1s ease-out;
+}
+
+.modal-widget .modal-dialog.active {    
+    bottom: 60vh;
+
+    will-change: bottom;
+    transition: bottom .15s ease-in;
+}
+
+
+.modal-widget .overlay {
+    backdrop-filter: blur(3px) opacity(0);
+    height: 0;
     width: 100vw;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(3px);
+
+    will-change: backdrop-filter;
+    transition: backdrop-filter .2s ease;
 }
 
-.hidden {
-    display: none;
+.modal-widget .overlay.active {
+    backdrop-filter: blur(3px) opacity(1);
+    height: 100vh;
+
+    will-change: backdrop-filter;
+    transform: backdrop-filter .25s ease;
 }
 
-.modal-dialog button {
+.modal-dialog #close-modal-button {
     padding: 2rem;
     cursor: pointer;
 }

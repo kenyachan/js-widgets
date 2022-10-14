@@ -1,20 +1,17 @@
-const modalCloseButton = document.querySelector('.modal-widget button');
 const modalOpenButton = document.querySelector('#open-modal-button');
+const modalCloseButton = document.querySelector('.modal-widget #close-modal-button');
 const modalOverlay = document.querySelector('.overlay');
 const modalDialog = document.querySelector('.modal-dialog');
 
 
-modalOpenButton.addEventListener('click', closeModal);
+modalOpenButton.addEventListener('click', toggleModal);
+modalOverlay.addEventListener('click', toggleModal);
+modalCloseButton.addEventListener('click', toggleModal);
 
 
-modalCloseButton.addEventListener('click', closeModal);
 
-
-modalOverlay.addEventListener('click', closeModal);
-
-
-function closeModal() {
+function toggleModal() {
     modalDialog.classList.toggle('active');
-    modalOverlay.classList.toggle('hidden');
+    modalOverlay.classList.toggle('active');
 }
   
